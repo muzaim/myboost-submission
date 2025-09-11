@@ -38,7 +38,7 @@ const Content = () => {
 							{/* image */}
 							<div className="flex-shrink-0">
 								<Image
-									src={article.img}
+									src={article.cover}
 									width={250}
 									height={250}
 									alt={article.title}
@@ -53,7 +53,7 @@ const Content = () => {
 										{article.title}
 									</h1>
 									<p className="text-gray-600 leading-relaxed line-clamp-4">
-										{article.desc}
+										{article.summary}
 									</p>
 								</div>
 

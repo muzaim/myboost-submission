@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 import Image from "next/image";
+import { useArticleFormStore } from "@/store/articleStore";
 
 interface Stage3Props {
     formik: FormikProps<{
@@ -28,24 +29,26 @@ const coverImages = [
 ];
 
 const Stage3: React.FC<Stage3Props> = ({ formik }) => {
+    const setField = useArticleFormStore((state) => state.setField);
+
     const [selected, setSelected] = useState(formik.values.cover);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
         if (textareaRef.current) {
-            textareaRef.current.style.height = "auto"; // reset
-            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px"; // set sesuai content
+            textareaRef.current.style.height = "auto";
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
         }
-    }, [formik.values.content]); // dijalankan setiap content berubah
+    }, [formik.values.content]);
     const handleSelect = (img: string) => {
         setSelected(img);
         formik.setFieldValue("cover", img);
-        formik.setFieldTouched("cover", true); // <- ini penting
+        setField("cover", img);
+
     };
 
     return (
         <div className="w-[80%] mx-auto flex flex-col gap-8">
-            {/* <h2 className="text-2xl font-bold uppercase">Stage 3: Content</h2> */}
 
             <div className="flex flex-col gap-2">
                 <label htmlFor="content" className="font-semibold text-black">
@@ -56,9 +59,12 @@ const Stage3: React.FC<Stage3Props> = ({ formik }) => {
                     id="content"
                     name="content"
                     placeholder="Write the content here..."
-                    className="border-b border-black py-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800 w-full overflow-hidden"
+                    className="border rounded-lg border-black p-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800 w-full overflow-hidden"
                     value={formik.values.content}
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                        formik.handleChange(e);
+                        setField("content", e.target.value);
+                    }}
                     onBlur={formik.handleBlur}
                 />
 

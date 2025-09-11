@@ -19,12 +19,9 @@ const Stage4: React.FC<Stage4Props> = ({ formik }) => {
 
     return (
         <div className="w-[80%] mx-auto flex flex-col gap-8">
-            {/* <h2 className="text-3xl font-bold uppercase border-b border-black pb-2 mb-6">
-                Stage 4: Summary
-            </h2> */}
+
 
             <div className="flex flex-col lg:flex-row gap-6">
-                {/* LEFT SIDE - INFO */}
                 {values.cover && (
                     <div className="flex-1 flex justify-center items-start">
                         <Image
@@ -37,7 +34,6 @@ const Stage4: React.FC<Stage4Props> = ({ formik }) => {
                     </div>
                 )}
 
-                {/* RIGHT SIDE - COVER IMAGE */}
                 <div className="flex-1 flex flex-col gap-4">
                     <div className="flex justify-between py-2 px-4 border-b border-black">
                         <span className="font-semibold">Title:</span>

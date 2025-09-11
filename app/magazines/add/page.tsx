@@ -4,13 +4,19 @@ import Stage1 from "@/components/sections/magazines/add/stage1";
 import Stage2 from "@/components/sections/magazines/add/stage2";
 import Stage3 from "@/components/sections/magazines/add/stage3";
 import Stage4 from "@/components/sections/magazines/add/stage4";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useArticleFormStore, useArticlesStore } from "@/store/articleStore";
+import { Article } from "@/store/articleStore";
+
 
 const AddMagazines = () => {
     const [stage, setStage] = useState(1);
-    const [showModal, setShowModal] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
+
+    const addArticle = useArticlesStore((state) => state.addArticle);
+    const formState = useArticleFormStore();
 
 
     const nextStage = () => {
@@ -31,35 +37,45 @@ const AddMagazines = () => {
 
     const stageFields: Record<number, string[]> = {
         1: ["title", "author"],
-        2: ["summary", "category"],
+        2: ["summary", "category", "place"],
         3: ["content", "cover"],
-        4: ["tags"],
     };
 
     const formik = useFormik({
         initialValues: {
-            title: "",
-            author: "",
-            summary: "",
-            category: "",
-            content: "",
-            cover: "",
-            tags: "",
+            title: formState.title,
+            author: formState.author,
+            summary: formState.summary,
+            category: formState.category,
+            place: formState.place,
+            content: formState.content,
+            cover: formState.cover,
         },
         validationSchema: Yup.object({
             title: Yup.string().required("Title is required"),
             author: Yup.string().required("Author is required"),
             summary: Yup.string().required("summary is required"),
             category: Yup.string().required("category is required"),
+            place: Yup.string().required("category is required"),
             content: Yup.string().required("content is required"),
             cover: Yup.string().required("Cover is required"),
-            tags: Yup.string().required("Tags are required"),
         }),
         onSubmit: (values) => {
-            console.log("Submitted data:", values);
-            alert("Form submitted successfully!");
-        },
+            const newArticle: Article = {
+                id: Date.now(),
+                date: new Date().toISOString(),
+                title: values.title,
+                author: values.author,
+                place: values.place,
+                content: values.content,
+                summary: values.summary,
+                cover: values.cover,
+                category: values.category,
+            };
 
+            console.log("Submitted data:", newArticle);
+            addArticle(newArticle);
+        }
     });
 
     const renderStage = () => {
@@ -76,6 +92,8 @@ const AddMagazines = () => {
                 return <Stage1 formik={formik} />;
         }
     };
+
+
 
     return (
         <div className="px-4 md:px-8 lg:px-16 py-10">
@@ -122,18 +140,46 @@ const AddMagazines = () => {
                         </button>
                     ) : (
                         <button
-                            type="submit"
-                            onClick={() => {
-                                formik.submitForm();
-                                setShowModal(true);
-                            }}
+                            type="button"
+                            onClick={() => setShowConfirm(true)}
                             className="px-6 py-3 bg-black text-white font-medium uppercase rounded-full hover:bg-gray-800 transition"
                         >
                             Submit
                         </button>
                     )}
-                </div>
 
+                </div>
+                {/* <div className="mt-4 p-4 border border-gray-300">
+                    <h3>Debug Zustand State:</h3>
+                    <pre>{JSON.stringify(formState, null, 2)}</pre>
+                </div> */}
+
+                {showConfirm && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-50 z-50">
+                        <div
+                            className="bg-[#fff] p-6 rounded-xl border border-black w-96"
+                        >
+                            <h2 className="text-lg font-medium mb-4">Make sure?</h2>
+                            <div className="flex justify-end gap-4">
+                                <button
+                                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 transition"
+                                    onClick={() => setShowConfirm(false)}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition"
+                                    onClick={() => {
+                                        formik.submitForm();
+                                        setShowConfirm(false);
+                                    }}
+                                >
+                                    Yes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </form>
         </div>
     );

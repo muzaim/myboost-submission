@@ -1,5 +1,6 @@
 import React from "react";
 import { FormikProps } from "formik";
+import { useArticleFormStore } from "@/store/articleStore";
 
 interface Stage1Props {
     formik: FormikProps<{
@@ -8,24 +9,28 @@ interface Stage1Props {
     }>;
 }
 const Stage1: React.FC<Stage1Props> = ({ formik }) => {
+    const setField = useArticleFormStore((state) => state.setField);
+
     return (
         <div className="w-[80%] mx-auto flex flex-col gap-8">
-            {/* <h2 className="text-2xl font-bold uppercase">Stage 1: Basic Info</h2> */}
 
             {/* Title Input */}
             <div className="flex flex-col gap-2">
                 <label htmlFor="title" className="font-semibold text-black">
-                    Magazine Title
+                    Title
                 </label>
                 <input
                     type="text"
                     id="title"
-                    name="title"   // <-- wajib ada agar Formik tahu ini field 'title'
+                    name="title"
                     placeholder="Enter magazine title"
                     className="border-b border-black py-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800"
-                    value={formik.values.title}       // <-- ambil dari Formik state
-                    onChange={formik.handleChange}    // <-- update Formik state
-                    onBlur={formik.handleBlur}        // <-- menandai field touched
+                    value={formik.values.title}
+                    onChange={(e) => {
+                        formik.handleChange(e);
+                        setField("title", e.target.value);
+                    }}
+                    onBlur={formik.handleBlur}
                 />
                 {formik.touched.title && formik.errors.title && (
                     <p className="text-red-500 text-sm">{formik.errors.title}</p>
@@ -44,7 +49,10 @@ const Stage1: React.FC<Stage1Props> = ({ formik }) => {
                     placeholder="Enter author name"
                     className="border-b border-black py-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800"
                     value={formik.values.author}
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                        formik.handleChange(e);
+                        setField("author", e.target.value);
+                    }}
                     onBlur={formik.handleBlur}
                 />
                 {formik.touched.author && formik.errors.author && (

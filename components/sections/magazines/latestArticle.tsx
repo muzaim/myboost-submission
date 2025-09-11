@@ -1,36 +1,11 @@
+import { useArticlesStore } from "@/store/articleStore";
 import Image from "next/image";
 import React from "react";
 
-const articles = [
-	{
-		id: 4,
-		title: "Whispering Wind",
-		author: "Kartini",
-		place: "Jepara",
-		date: "June, 5 1945",
-		desc: "Angin berbisik membawa cerita dari masa lalu, tentang perjuangan, cinta, dan doa-doa yang tak pernah berhenti dipanjatkan. Di Jepara, suara angin seolah masih menyampaikan pesan Kartini untuk terus memperjuangkan kesetaraan. Artikel ini merangkai kisah alam dan sejarah, menghubungkan pembaca dengan warisan nilai luhur yang tak lekang oleh waktu.",
-		img: "/img/article/image4.png",
-	},
-	{
-		id: 5,
-		title: "Morning Glory",
-		author: "Sudirman",
-		place: "Yogyakarta",
-		date: "July, 17 1958",
-		desc: "Fajar yang merekah di ufuk timur selalu menghadirkan semangat baru. Artikel ini menggambarkan kehidupan masyarakat Yogyakarta pada masa pembangunan, bagaimana mereka memulai hari dengan doa, kerja keras, dan gotong royong. Morning Glory menjadi simbol harapan, bahwa setiap hari adalah kesempatan untuk bangkit dan melangkah maju bersama.",
-		img: "/img/article/image5.png",
-	},
-	{
-		id: 6,
-		title: "Endless Path",
-		author: "Cut Nyak",
-		place: "Aceh",
-		date: "August, 22 1965",
-		desc: "Jalan yang panjang seolah tak berujung, namun di sanalah kehidupan menemukan maknanya. Perjuangan rakyat Aceh melawan penjajahan menjadi bukti bahwa tekad yang kuat mampu menembus batas. Artikel ini mengisahkan perjalanan tanpa henti, yang mengajarkan kepada kita bahwa meskipun jalan tampak melelahkan, setiap langkah adalah sejarah yang tak ternilai.",
-		img: "/img/article/image6.png",
-	},
-];
+
 const LatestArticle = () => {
+	const articles = useArticlesStore((state) => state.articles);
+
 	return (
 		<div className=" h-full w-full pb-40">
 			<div className="flex flex-row justify-between items-center py-10">
@@ -44,7 +19,7 @@ const LatestArticle = () => {
 			<div>
 				<div className="flex border border-gray-400 divide-x divide-gray-400">
 					<div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-y divide-gray-400 border border-gray-400">
-						{articles.map((article) => (
+						{articles.slice(0, 3).map((article) => (
 							<div key={article.id} className="p-6 flex flex-col">
 								{/* Header (date + tag) */}
 								<div className="flex flex-row justify-between items-center mb-4">
@@ -61,7 +36,7 @@ const LatestArticle = () => {
 
 								{/* Image */}
 								<Image
-									src={article.img}
+									src={article.cover}
 									width={400}
 									height={500}
 									alt={article.title}
@@ -75,7 +50,7 @@ const LatestArticle = () => {
 
 								{/* Description */}
 								<p className="text-gray-700 text-sm flex-grow leading-relaxed mb-4 line-clamp-4">
-									{article.desc}
+									{article.summary}
 								</p>
 
 								{/* Footer info */}

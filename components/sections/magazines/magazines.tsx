@@ -44,7 +44,7 @@ const Magazines = () => {
 
 							{/* Image */}
 							<Image
-								src={article.img}
+								src={article.cover}
 								width={400}
 								height={500}
 								alt={article.title}
@@ -56,7 +56,7 @@ const Magazines = () => {
 
 							{/* Description */}
 							<p className="text-gray-700 text-sm flex-grow leading-relaxed mb-4 line-clamp-4">
-								{article.desc}
+								{article.summary}
 							</p>
 
 							{/* Footer info */}
