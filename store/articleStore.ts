@@ -1,7 +1,23 @@
-import Image from "next/image";
-import React from "react";
+import { create } from "zustand";
 
-const articles = [
+export interface Article {
+	id: number;
+	title: string;
+	author: string;
+	place: string;
+	date: string;
+	desc: string;
+	img: string;
+}
+
+interface ArticlesStore {
+	articles: Article[];
+	addArticle: (article: Article) => void;
+	updateArticle: (id: number, updated: Partial<Article>) => void;
+	removeArticle: (id: number) => void;
+}
+
+const initialArticles: Article[] = [
 	{
 		id: 1,
 		title: "Hope Die Last",
@@ -56,92 +72,32 @@ const articles = [
 		desc: "Jalan yang panjang seolah tak berujung, namun di sanalah kehidupan menemukan maknanya. Perjuangan rakyat Aceh melawan penjajahan menjadi bukti bahwa tekad yang kuat mampu menembus batas. Artikel ini mengisahkan perjalanan tanpa henti, yang mengajarkan kepada kita bahwa meskipun jalan tampak melelahkan, setiap langkah adalah sejarah yang tak ternilai.",
 		img: "/img/article/image6.png",
 	},
+	{
+		id: 7,
+		title: "Endless Path",
+		author: "Cut Nyak",
+		place: "Aceh",
+		date: "August, 22 1965",
+		desc: "Jalan yang panjang seolah tak berujung, namun di sanalah kehidupan menemukan maknanya. Perjuangan rakyat Aceh melawan penjajahan menjadi bukti bahwa tekad yang kuat mampu menembus batas. Artikel ini mengisahkan perjalanan tanpa henti, yang mengajarkan kepada kita bahwa meskipun jalan tampak melelahkan, setiap langkah adalah sejarah yang tak ternilai.",
+		img: "/img/article/image6.png",
+	},
 ];
 
-const Magazines = () => {
-	return (
-		<div className="">
-			<div className="w-full">
-				<h1 className="w-full text-center font-bold uppercase text-[15vw] leading-none">
-					magazines
-				</h1>
-				<div className="flex flex-row justify-between items-center border-b border-gray-300 pb-4">
-					<h1 className="uppercase text-xl font-bold tracking-wide">
-						Categories
-					</h1>
+export const useArticlesStore = create<ArticlesStore>((set) => ({
+	articles: initialArticles,
 
-					<div className="flex flex-row gap-3">
-						{["All", "Art", "Street Art", "Sculptures"].map(
-							(cat, i) => (
-								<button
-									key={i}
-									className="px-5 py-2 border border-black rounded-full text-sm font-medium uppercase
-                   hover:bg-black hover:text-white transition-colors duration-300"
-								>
-									{cat}
-								</button>
-							)
-						)}
-					</div>
-				</div>
-			</div>
-			<div className="mb-40">
-				<div className="grid grid-cols-1 md:grid-cols-3 divide-x divide-y divide-gray-400 border border-gray-400">
-					{articles.map((article) => (
-						<div key={article.id} className="p-6 flex flex-col">
-							{/* Header (date + tag) */}
-							<div className="flex flex-row justify-between items-center mb-4">
-								<h1 className="text-sm text-gray-600">
-									{article.date}
-								</h1>
-								<button
-									className="px-4 py-1 border border-gray-400 rounded-full text-xs font-medium uppercase
-          hover:bg-black hover:text-white transition-colors duration-300"
-								>
-									Art
-								</button>
-							</div>
+	addArticle: (article) =>
+		set((state) => ({ articles: [...state.articles, article] })),
 
-							{/* Image */}
-							<Image
-								src={article.img}
-								width={400}
-								height={500}
-								alt={article.title}
-								className="object-cover w-full mb-4"
-							/>
+	updateArticle: (id, updated) =>
+		set((state) => ({
+			articles: state.articles.map((art) =>
+				art.id === id ? { ...art, ...updated } : art
+			),
+		})),
 
-							{/* Title */}
-							<h2 className="font-bold text-xl mb-2">
-								{article.title}
-							</h2>
-
-							{/* Description */}
-							<p className="text-gray-700 text-sm flex-grow leading-relaxed mb-4 line-clamp-4">
-								{article.desc}
-							</p>
-
-							{/* Footer info */}
-							<div className="flex flex-row text-xs text-gray-600 gap-6">
-								<p>
-									<span className="font-semibold text-black">
-										Date:
-									</span>{" "}
-									{article.date}
-								</p>
-								<p>
-									<span className="font-semibold text-black">
-										Duration:
-									</span>{" "}
-									20 min
-								</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</div>
-	);
-};
-
-export default Magazines;
+	removeArticle: (id) =>
+		set((state) => ({
+			articles: state.articles.filter((art) => art.id !== id),
+		})),
+}));

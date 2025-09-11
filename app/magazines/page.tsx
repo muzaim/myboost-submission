@@ -1,7 +1,5 @@
 import React from "react";
-import Footer from "@/components/layouts/footer";
-import Header from "@/components/layouts/header";
-import Magazines from "@/components/sections/parts/magazines/magazines";
+import Magazines from "@/components/sections/magazines/magazines";
 
 const Magazine = () => {
 	return (

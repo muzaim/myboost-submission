@@ -12,9 +12,8 @@ const Header = () => {
 					</Link>
 					<ul className="flex gap-5 text-md">
 						<Link href="/magazines" className="">
-							Magazine
+							Magazines
 						</Link>
-						<Link href="/author">Author</Link>
 						<Link href="/podcast">Podcast</Link>
 						<div>-</div>
 						<div className="flex items-center justify-end gap-5">

@@ -1,4 +1,4 @@
-import Podcasts from "@/components/sections/parts/podcasts/podcasts";
+import Podcasts from "@/components/sections/magazines/podcasts/podcasts";
 import React from "react";
 
 const Podcast = () => {
