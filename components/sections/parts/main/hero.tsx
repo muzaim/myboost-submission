@@ -56,11 +56,11 @@ const Hero = () => {
 			</div>
 
 			{/* image di paling bawah */}
-			<div className="mt-5 mb-5 h-[600px] overflow-hidden">
+			<div className="mt-5 mb-5 h-[700px] overflow-hidden">
 				<Image
 					src="/img/hero.png"
 					width={2000}
-					height={200}
+					height={400}
 					alt="hero"
 					className="w-full h-full object-cover object-center"
 				/>

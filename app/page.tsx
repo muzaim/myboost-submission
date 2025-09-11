@@ -1,7 +1,5 @@
 import Authors from "@/components/sections/parts/main/authors";
 import Content from "@/components/sections/parts/podcasts/content";
-import Footer from "@/components/layouts/footer";
-import Header from "@/components/layouts/header";
 import Hero from "@/components/sections/parts/main/hero";
 import Podcast from "@/components/sections/parts/main/podcast";
 
