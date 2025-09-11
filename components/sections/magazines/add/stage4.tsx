@@ -68,10 +68,11 @@ const Stage4: React.FC<Stage4Props> = ({ formik }) => {
                         <p>{values.summary || "-"}</p>
                     </div>
 
-                    <div className="flex flex-col py-2 px-4 border-b border-black">
+                    <div className="flex flex-col py-2 px-4 border-b border-black max-h-64 overflow-y-auto">
                         <span className="font-semibold mb-1">Content:</span>
                         <p className="whitespace-pre-line">{values.content || "-"}</p>
                     </div>
+
                 </div>
             </div>
         </div>

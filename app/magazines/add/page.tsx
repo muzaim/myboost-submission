@@ -10,6 +10,8 @@ import * as Yup from "yup";
 
 const AddMagazines = () => {
     const [stage, setStage] = useState(1);
+    const [showModal, setShowModal] = useState(false);
+
 
     const nextStage = () => {
         const currentStageFields = stageFields[stage];
@@ -57,6 +59,7 @@ const AddMagazines = () => {
             console.log("Submitted data:", values);
             alert("Form submitted successfully!");
         },
+
     });
 
     const renderStage = () => {
@@ -89,6 +92,7 @@ const AddMagazines = () => {
 
             {/* Stage Content */}
             <form
+
                 onSubmit={formik.handleSubmit}
                 className="h-max w-full bg-gray-100 p-8 border border-black-300 rounded-xl flex flex-col justify-between"
             >
@@ -119,6 +123,10 @@ const AddMagazines = () => {
                     ) : (
                         <button
                             type="submit"
+                            onClick={() => {
+                                formik.submitForm();
+                                setShowModal(true);
+                            }}
                             className="px-6 py-3 bg-black text-white font-medium uppercase rounded-full hover:bg-gray-800 transition"
                         >
                             Submit

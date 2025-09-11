@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 import Image from "next/image";
 
@@ -29,7 +29,14 @@ const coverImages = [
 
 const Stage3: React.FC<Stage3Props> = ({ formik }) => {
     const [selected, setSelected] = useState(formik.values.cover);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+    useEffect(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto"; // reset
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px"; // set sesuai content
+        }
+    }, [formik.values.content]); // dijalankan setiap content berubah
     const handleSelect = (img: string) => {
         setSelected(img);
         formik.setFieldValue("cover", img);
@@ -45,14 +52,16 @@ const Stage3: React.FC<Stage3Props> = ({ formik }) => {
                     Content
                 </label>
                 <textarea
+                    ref={textareaRef}
                     id="content"
                     name="content"
                     placeholder="Write the content here..."
-                    className="border-b border-black py-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800"
+                    className="border-b border-black py-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800 w-full overflow-hidden"
                     value={formik.values.content}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
+
                 {formik.touched.content && formik.errors.content && (
                     <p className="text-red-500 text-sm">{formik.errors.content}</p>
                 )}
