@@ -1,4 +1,4 @@
-import PodcastDetail from "@/components/sections/magazines/podcasts/podcastDetail";
+import PodcastDetail from "@/components/sections/podcasts/podcastDetail";
 import React from "react";
 
 const PodcastDetailPage = () => {

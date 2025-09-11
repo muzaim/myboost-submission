@@ -1,4 +1,4 @@
-import MagazineDetail from "@/components/sections/parts/magazines/magazineDetail";
+import MagazineDetail from "@/components/sections/magazines/magazineDetail";
 import React from "react";
 
 const MagazineDetailPage = () => {

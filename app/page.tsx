@@ -1,5 +1,5 @@
 import Authors from "@/components/sections/main/authors";
-import Content from "@/components/sections/magazines/podcasts/content";
+import Content from "@/components/sections/podcasts/content";
 import Hero from "@/components/sections/main/hero";
 import Podcast from "@/components/sections/main/podcast";
 
