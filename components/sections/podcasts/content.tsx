@@ -3,7 +3,8 @@
 import Image from "next/image";
 import React from "react";
 import { useArticlesStore } from "@/store/articleStore";
-
+import ArticleCard from "../../ui/articleCard";
+import Link from "next/link";
 
 const popularArticles = [
 	{
@@ -30,66 +31,21 @@ const Content = () => {
 		<div className="w-full grid grid-cols-12 gap-4">
 			<div className="col-span-9">
 				<div className="flex flex-col">
-					{articles.slice(0, 6).map((article) => (
-						<div
+					{articles.slice(0, 6).map((article, index) => (
+						<ArticleCard
 							key={article.id}
-							className="flex flex-row gap-8 py-8 border-b border-black-300 last:border-b-0"
-						>
-							{/* image */}
-							<div className="flex-shrink-0">
-								<Image
-									src={article.cover}
-									width={250}
-									height={250}
-									alt={article.title}
-									className="object-cover"
-								/>
-							</div>
-
-							{/* content */}
-							<div className="flex flex-col justify-between w-full">
-								<div className="flex flex-col gap-3">
-									<h1 className="font-bold text-3xl text-gray-900">
-										{article.title}
-									</h1>
-									<p className="text-gray-600 leading-relaxed line-clamp-4">
-										{article.summary}
-									</p>
-								</div>
-
-								<div className="flex flex-row justify-between items-end mt-6">
-									<div className="flex flex-row gap-6 text-sm text-gray-700">
-										<div className="flex gap-2">
-											<span className="font-semibold text-gray-500">
-												Author :
-											</span>
-											<span>{article.author}</span>
-										</div>
-										<div className="flex gap-2">
-											<span className="font-semibold text-gray-500">
-												Place :
-											</span>
-											<span>{article.place}</span>
-										</div>
-										<div className="flex gap-2">
-											<span className="font-semibold text-gray-500">
-												Date :
-											</span>
-											<span>{article.date}</span>
-										</div>
-									</div>
-
-									<button className="bg-white-300 text-black px-5 py-2 rounded-full border hover:bg-black hover:text-white transition">
-										Read More
-									</button>
-								</div>
-							</div>
-						</div>
+							article={article}
+							index={index}
+						/>
 					))}
 				</div>
-
-				<div className="py-20 uppercase text-xl cursor-pointer font-semibold">
-					All articles{" "}
+				<div className="my-20">
+					<Link
+						href={`/magazines`}
+						className="font-semibold text-xl  text-black hover:text-gray-700 transition-colors duration-300 uppercase"
+					>
+						all articles &raquo;
+					</Link>
 				</div>
 			</div>
 			<div className="col-span-3 flex flex-col gap-10">

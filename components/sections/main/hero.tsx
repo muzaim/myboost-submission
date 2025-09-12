@@ -63,6 +63,7 @@ const Hero = () => {
 					height={400}
 					alt="hero"
 					className="w-full h-full object-cover object-center"
+					data-aos="fade-up"
 				/>
 			</div>
 		</div>

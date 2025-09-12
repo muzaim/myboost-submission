@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const podcasts = [
@@ -68,9 +69,12 @@ const Podcasts = () => {
 					</div>
 
 					{/* Judul */}
-					<h1 className="col-span-4 font-semibold text-lg">
+					<Link
+						href={`/podcast/${podcast.id}`}
+						className="col-span-4 font-semibold text-lg"
+					>
 						{podcast.title}
-					</h1>
+					</Link>
 
 					{/* Detail */}
 					<div className="col-span-2 text-sm text-gray-600 flex gap-5">
@@ -90,8 +94,8 @@ const Podcasts = () => {
 
 					{/* Button */}
 					<div className="col-span-2 flex justify-center">
-						<button className="px-5 py-2 border border-black rounded-full text-sm font-medium uppercase hover:bg-black hover:text-white transition-colors duration-300">
-							Listen
+						<button className=" cursor-pointer px-5 py-2 border border-black rounded-full text-sm font-medium uppercase hover:bg-black hover:text-white transition-colors duration-300">
+							play
 						</button>
 					</div>
 				</div>

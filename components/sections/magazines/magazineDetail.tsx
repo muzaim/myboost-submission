@@ -14,20 +14,20 @@ const MagazineDetail = () => {
 					<span className="font-semibold uppercase">Magazines</span>
 				</div>
 			</div>
-			<div className="bg-white-30 text-black grid grid-cols-2 py-20 gap-6">
+			<div className="bg-white-30  grid grid-cols-2 py-5 gap-6">
 				<h3 className="font-bold text-[7rem] uppercase leading-none">
 					Hope <br />
 					Die Last
 				</h3>
 				<div className="flex flex-col justify-between">
-					<span className="font-semibold">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Autem asperiores sunt iure fugiat. Mollitia quidem
-						voluptatem assumenda, quaerat natus nemo in praesentium
-						iure eaque sint quas, aut temporibus? Ut minima quam
-						distinctio tempora aut. Assumenda quia est harum iusto,
-						eum animi maiores officiis nobis aliquid sit sequi
-						commodi? Voluptatibus, voluptates!
+					<span className="font-semibold text-gray-700">
+						Lorem ipsum dolor sit dsadsa amet consectetur
+						adipisicing elit. Autem asperiores sunt iure fugiat.
+						Mollitia quidem voluptatem assumenda, quaerat natus nemo
+						in praesentium iure eaque sint quas, aut temporibus? Ut
+						minima quam distinctio tempora aut. Assumenda quia est
+						harum iusto, eum animi maiores officiis nobis aliquid
+						sit sequi commodi? Voluptatibus, voluptates!
 					</span>
 				</div>
 			</div>

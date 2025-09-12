@@ -1,3 +1,4 @@
+import AuthorCard from "@/components/ui/authorCard";
 import Image from "next/image";
 import React from "react";
 
@@ -52,40 +53,18 @@ const Authors = () => {
 			<div className="flex flex-row justify-between items-center py-10">
 				<h1 className="text-[8rem] font-bold uppercase">Authors</h1>
 				<span className="font-semibold text-lg uppercase">
-					All authors
+					All authors &raquo;
 				</span>
 			</div>
 			<div>
-				<div className="grid grid-cols-2 border border-black">
+				<div className="grid grid-cols-2 ">
 					{authors.map((author, idx) => (
-						<div
-							key={author.id}
-							className={`flex items-center gap-5 p-4 border-black
-            ${idx % 2 === 0 ? "border-r" : ""}   /* garis vertikal */
-            ${idx < authors.length - 2 ? "border-b" : ""} /* garis horizontal */
-          `}
-						>
-							<Image
-								src={author.img}
-								width={120}
-								height={120}
-								alt={author.name}
-								className="object-cover"
-							/>
-							<div className="flex flex-col">
-								<h1 className="font-bold text-lg text-black">
-									{author.name}
-								</h1>
-								<div className="flex flex-row gap-2">
-									<span className="text-gray-700">
-										Job: {author.job}
-									</span>
-									<span className="text-gray-700">
-										City: {author.city}
-									</span>
-								</div>
-							</div>
-						</div>
+						<AuthorCard
+							key={author.id.toString()}
+							author={author}
+							idx={idx}
+							total={authors.length}
+						/>
 					))}
 				</div>
 			</div>

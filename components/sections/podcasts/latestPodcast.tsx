@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const podcasts = [
@@ -32,16 +33,21 @@ const LatestPodcast = () => {
 				<h1 className="text-[6rem] font-bold uppercase">
 					Latest Podcast
 				</h1>
-				<span className="font-semibold text-lg uppercase">
-					All episodes
-				</span>
+				<Link
+					href={`/podcast`}
+					className="font-semibold text-black hover:text-gray-700 transition-colors duration-300 uppercase"
+				>
+					All episodes &raquo;
+				</Link>
 			</div>
 			<div>
-				<div className="flex border border-black divide-x divide-black">
+				<div className="flex">
 					{podcasts.map((podcast) => (
 						<div
 							key={podcast.id}
-							className="w-1/3 p-6 flex flex-col gap-4"
+							className="w-1/3 p-6 flex flex-col gap-4 border border-gray-400 divide-x divide-gray-400"
+							data-aos="fade-up"
+							data-aos-delay={(podcast.id * 200).toString()}
 						>
 							<Image
 								src={podcast.img}
