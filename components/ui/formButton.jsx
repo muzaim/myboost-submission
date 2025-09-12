@@ -25,7 +25,7 @@ const FormButton = ({
 		<button
 			type={type}
 			onClick={onClick}
-			className={`${baseStyle} ${variants[variant]} ${shapes[shape]} ${className}`}
+			className={`${baseStyle} ${variants[variant]} ${shapes[shape]} ${className} cursor-pointer`}
 		>
 			{children}
 		</button>

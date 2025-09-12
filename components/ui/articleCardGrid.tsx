@@ -8,6 +8,7 @@ type ArticleCardGridProps = {
 		summary: string;
 		cover: string;
 		date: string;
+		category: string;
 	};
 	index: number;
 };
@@ -15,17 +16,23 @@ type ArticleCardGridProps = {
 const ArticleCardGrid = ({ article, index }: ArticleCardGridProps) => {
 	return (
 		<div
-			className="p-6 flex flex-col border border-gray-400 last:col-span-1"
+			className="p-10 flex flex-col border border-gray-400 last:col-span-1 "
 			data-aos="fade-up"
 			data-aos-delay={(index * 200).toString()}
 		>
-			<div className="flex flex-row justify-between items-center mb-4">
-				<h1 className="text-sm text-gray-600">{article.date}</h1>
+			<div className="flex flex-row justify-between items-center mb-10">
+				<h1 className="text-sm text-gray-600">
+					{new Date(article.date).toLocaleDateString("en-US", {
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+					})}
+				</h1>
 				<button
 					className="px-4 py-1 border border-gray-400 rounded-full text-xs font-medium uppercase
             hover:bg-black hover:text-white transition-colors duration-300"
 				>
-					Art
+					{article.category}
 				</button>
 			</div>
 
@@ -37,7 +44,7 @@ const ArticleCardGrid = ({ article, index }: ArticleCardGridProps) => {
 				className="object-cover w-full mb-4"
 			/>
 
-			<h2 className="font-bold text-3xl">{article.title}</h2>
+			<h2 className="font-bold text-3xl font-poppins">{article.title}</h2>
 
 			<p className="text-gray-700 text-sm flex-grow leading-relaxed mb-4 line-clamp-4 my-7">
 				{article.summary}
@@ -47,7 +54,16 @@ const ArticleCardGrid = ({ article, index }: ArticleCardGridProps) => {
 				<div className="flex flex-row gap-8">
 					<p>
 						<span className="font-semibold text-black">Date:</span>{" "}
-						{article.date}
+						<span className="text-gray-600">
+							{new Date(article.date).toLocaleDateString(
+								"en-US",
+								{
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								}
+							)}
+						</span>
 					</p>
 					<p>
 						<span className="font-semibold text-black">

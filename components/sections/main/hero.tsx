@@ -4,46 +4,48 @@ import React from "react";
 const Hero = () => {
 	return (
 		<div className="bg-white-30 text-black p-0 w-full flex flex-col">
-			<h1 className="text-[18rem] font-bold uppercase leading-none tracking-tight w-full text-center">
+			<h1 className="text-[18rem] font-bold uppercase leading-none tracking-tight w-full text-center font-serif">
 				art & life
 			</h1>
 
 			{/* news ticker */}
-			<div className="h-12 bg-black text-white flex items-center justify-start px-5 gap-4">
+			<div className="h-12 bg-black text-white flex items-center justify-center px-5 gap-4 text-center">
 				<span className="font-bold">News Ticker+++</span>
-				<span>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+				<span className="">
+					Step into a world where time stands still, and every
+					sculpture tells a story of artistry, tradition, and history.
+					Ancient sculptures whisper the stories of art and history,
+					frozen in time yet alive in imagination.
 				</span>
 			</div>
 
 			{/* content grid */}
 			<div className="bg-white-30 text-black grid grid-cols-2 p-5 gap-6">
-				<h3 className="font-bold text-[7rem] uppercase leading-none">
+				<h3 className="font-bold text-[7rem] uppercase leading-none font-serif">
 					Dont Close <br />
 					Your Eyes
 				</h3>
-				<div className="flex flex-col justify-between">
+				<div className="flex flex-col justify-between text-gray-600">
 					<span>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Autem asperiores sunt iure fugiat. Mollitia quidem
-						voluptatem assumenda, quaerat natus nemo in praesentium
-						iure eaque sint quas, aut temporibus? Ut minima quam
-						distinctio tempora aut. Assumenda quia est harum iusto,
-						eum animi maiores officiis nobis aliquid sit sequi
-						commodi? Voluptatibus, voluptates!
+						In the quiet halls of time, Ancient sculptures stand as
+						guardians of forgotten stories, Their carved forms
+						whispering secrets of artistry and human devotion, Each
+						curve and contour reflecting the culture, passion, and
+						history of civilizations past, Inviting us to journey
+						through the echoes of creativity that shaped our world.
 					</span>
 
 					<div className="flex flex-row gap-3 justify-between items-end mt-6">
 						<div className="flex flex-row gap-3">
-							<div className="flex gap-2">
-								<span className="font-bold">Text</span>
+							<div className="flex gap-2 text-black">
+								<span className="font-bold ">Text</span>
 								<span>Bung Tedjo</span>
 							</div>
-							<div className="flex gap-2">
+							<div className="flex gap-2 text-black">
 								<span className="font-bold">Place</span>
 								<span>Soerabadja</span>
 							</div>
-							<div className="flex gap-2">
+							<div className="flex gap-2 text-black">
 								<span className="font-bold">Date</span>
 								<span>March,1 1956</span>
 							</div>

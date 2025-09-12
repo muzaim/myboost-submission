@@ -12,95 +12,13 @@ export interface Article {
 	cover: string;
 }
 
-interface ArticlesStore {
+export interface ArticlesStore {
 	articles: Article[];
 	addArticle: (article: Article) => void;
-	updateArticle: (id: number, updated: Partial<Article>) => void;
-	removeArticle: (id: number) => void;
+	clearArticles: () => void;
 }
 
-const initialArticles: Article[] = [
-	{
-		id: 1,
-		title: "Hope Die Last",
-		author: "Bung Tedjo",
-		place: "Soerabadja",
-		date: "March, 1 1956",
-		category: "Art",
-		content:
-			"Dalam suasana pasca perang, harapan menjadi satu-satunya kekuatan yang menuntun masyarakat untuk terus melangkah. Artikel ini menggambarkan perjalanan batin seorang pejuang yang tak pernah menyerah, meskipun hidup penuh luka dan kehilangan. Kisahnya mengajarkan bahwa harapan tak pernah mati, justru tumbuh di tengah keterpurukan, menjadi cahaya kecil yang mampu menuntun banyak orang keluar dari kegelapan.",
-		summary:
-			"Dalam suasana pasca perang, harapan menjadi satu-satunya kekuatan yang menuntun masyarakat untuk terus melangkah. Artikel ini menggambarkan perjalanan batin seorang pejuang yang tak pernah menyerah, meskipun hidup penuh luka dan kehilangan. Kisahnya mengajarkan bahwa harapan tak pernah mati, justru tumbuh di tengah keterpurukan, menjadi cahaya kecil yang mampu menuntun banyak orang keluar dari kegelapan.",
-		cover: "/img/article/image1.png",
-	},
-	{
-		id: 2,
-		title: "Silent Journey",
-		author: "Sari Dewi",
-		place: "Bandung",
-		date: "April, 12 1960",
-		category: "Art",
-		content:
-			"Perjalanan sunyi sering kali menyimpan cerita yang tak terucap. Di balik setiap langkah, ada beban, doa, dan rahasia yang hanya diketahui oleh hati. Artikel ini mengajak pembaca menelusuri keheningan, menemukan makna di antara jarak dan waktu, serta bagaimana keheningan bisa menjadi ruang refleksi terdalam bagi jiwa yang merindukan kedamaian.",
-		summary:
-			"Perjalanan sunyi sering kali menyimpan cerita yang tak terucap. Di balik setiap langkah, ada beban, doa, dan rahasia yang hanya diketahui oleh hati. Artikel ini mengajak pembaca menelusuri keheningan, menemukan makna di antara jarak dan waktu, serta bagaimana keheningan bisa menjadi ruang refleksi terdalam bagi jiwa yang merindukan kedamaian.",
-		cover: "/img/article/image2.png",
-	},
-	{
-		id: 3,
-		title: "Red Horizon",
-		author: "Agus Salim",
-		place: "Jakarta",
-		date: "May, 20 1970",
-		category: "Art",
-		content:
-			"Horizon merah menjadi simbol dari pergulatan panjang bangsa dalam meraih kebebasan. Warna merah bukan hanya melambangkan keberanian, tetapi juga pengorbanan yang tak terhitung jumlahnya. Artikel ini mengisahkan tentang generasi muda yang berani bermimpi besar, meski harus melewati badai tantangan, dan bagaimana semangat itu masih relevan hingga hari ini.",
-		summary:
-			"Horizon merah menjadi simbol dari pergulatan panjang bangsa dalam meraih kebebasan. Warna merah bukan hanya melambangkan keberanian, tetapi juga pengorbanan yang tak terhitung jumlahnya. Artikel ini mengisahkan tentang generasi muda yang berani bermimpi besar, meski harus melewati badai tantangan, dan bagaimana semangat itu masih relevan hingga hari ini.",
-		cover: "/img/article/image3.png",
-	},
-	{
-		id: 4,
-		title: "Whispering Wind",
-		author: "Kartini",
-		place: "Jepara",
-		date: "June, 5 1945",
-		category: "Art",
-		content:
-			"Angin berbisik membawa cerita dari masa lalu, tentang perjuangan, cinta, dan doa-doa yang tak pernah berhenti dipanjatkan. Di Jepara, suara angin seolah masih menyampaikan pesan Kartini untuk terus memperjuangkan kesetaraan. Artikel ini merangkai kisah alam dan sejarah, menghubungkan pembaca dengan warisan nilai luhur yang tak lekang oleh waktu.",
-		summary:
-			"Angin berbisik membawa cerita dari masa lalu, tentang perjuangan, cinta, dan doa-doa yang tak pernah berhenti dipanjatkan. Di Jepara, suara angin seolah masih menyampaikan pesan Kartini untuk terus memperjuangkan kesetaraan. Artikel ini merangkai kisah alam dan sejarah, menghubungkan pembaca dengan warisan nilai luhur yang tak lekang oleh waktu.",
-		cover: "/img/article/image4.png",
-	},
-	{
-		id: 5,
-		title: "Morning Glory",
-		author: "Sudirman",
-		place: "Yogyakarta",
-		date: "July, 17 1958",
-		category: "Art",
-		content:
-			"Fajar yang merekah di ufuk timur selalu menghadirkan semangat baru. Artikel ini menggambarkan kehidupan masyarakat Yogyakarta pada masa pembangunan, bagaimana mereka memulai hari dengan doa, kerja keras, dan gotong royong. Morning Glory menjadi simbol harapan, bahwa setiap hari adalah kesempatan untuk bangkit dan melangkah maju bersama.",
-		summary:
-			"Fajar yang merekah di ufuk timur selalu menghadirkan semangat baru. Artikel ini menggambarkan kehidupan masyarakat Yogyakarta pada masa pembangunan, bagaimana mereka memulai hari dengan doa, kerja keras, dan gotong royong. Morning Glory menjadi simbol harapan, bahwa setiap hari adalah kesempatan untuk bangkit dan melangkah maju bersama.",
-		cover: "/img/article/image5.png",
-	},
-	{
-		id: 6,
-		title: "Endless Path",
-		author: "Cut Nyak",
-		place: "Aceh",
-		date: "August, 22 1965",
-		category: "Art",
-		content:
-			"Jalan yang panjang seolah tak berujung, namun di sanalah kehidupan menemukan maknanya. Perjuangan rakyat Aceh melawan penjajahan menjadi bukti bahwa tekad yang kuat mampu menembus batas. Artikel ini mengisahkan perjalanan tanpa henti, yang mengajarkan kepada kita bahwa meskipun jalan tampak melelahkan, setiap langkah adalah sejarah yang tak ternilai.",
-		summary:
-			"Jalan yang panjang seolah tak berujung, namun di sanalah kehidupan menemukan maknanya. Perjuangan rakyat Aceh melawan penjajahan menjadi bukti bahwa tekad yang kuat mampu menembus batas. Artikel ini mengisahkan perjalanan tanpa henti, yang mengajarkan kepada kita bahwa meskipun jalan tampak melelahkan, setiap langkah adalah sejarah yang tak ternilai.",
-		cover: "/img/article/image6.png",
-	},
-];
-
-interface ArticleForm {
+export interface ArticleForm {
 	title: string;
 	author: string;
 	summary: string;
@@ -111,6 +29,87 @@ interface ArticleForm {
 	setField: (field: string, value: string) => void;
 	resetForm: () => void;
 }
+
+const initialArticles: Article[] = [
+	{
+		id: 182317427,
+		title: "Hope Never Dies",
+		author: "Bung Tedjo",
+		place: "Surabaya",
+		date: "March 1, 1956",
+		category: "Art",
+		content:
+			"In the post-war atmosphere, hope became the only force guiding society to keep moving forward. This article portrays the inner journey of a fighter who never gave up, even amidst pain and loss. His story teaches that hope never dies; instead, it grows in adversity, becoming a small light capable of leading many out of darkness.",
+		summary:
+			"In the post-war atmosphere, hope became the only force guiding society to keep moving forward. This article portrays the inner journey of a fighter who never gave up, even amidst pain and loss. His story teaches that hope never dies; instead, it grows in adversity, becoming a small light capable of leading many out of darkness.",
+		cover: "/img/article/image1.png",
+	},
+	{
+		id: 9928172326,
+		title: "Silent Journey",
+		author: "Sari Dewi",
+		place: "Bandung",
+		date: "April 12, 1960",
+		category: "History",
+		content:
+			"A silent journey often holds untold stories. Behind every step lies burdens, prayers, and secrets known only to the heart. This article invites readers to explore silence, find meaning across distance and time, and discover how stillness can become the deepest space for reflection for those seeking peace.",
+		summary:
+			"A silent journey often holds untold stories. Behind every step lies burdens, prayers, and secrets known only to the heart. This article invites readers to explore silence, find meaning across distance and time, and discover how stillness can become the deepest space for reflection for those seeking peace.",
+		cover: "/img/article/image2.png",
+	},
+	{
+		id: 332221569,
+		title: "Red Horizon",
+		author: "Agus Salim",
+		place: "Jakarta",
+		date: "May 20, 1970",
+		category: "Sculpture",
+		content:
+			"The red horizon symbolizes the long struggle of a nation striving for freedom. Red not only represents courage but also countless sacrifices. This article tells the story of young generations daring to dream big despite facing storms of challenges, and how that spirit remains relevant today.",
+		summary:
+			"The red horizon symbolizes the long struggle of a nation striving for freedom. Red not only represents courage but also countless sacrifices. This article tells the story of young generations daring to dream big despite facing storms of challenges, and how that spirit remains relevant today.",
+		cover: "/img/article/image3.png",
+	},
+	{
+		id: 8273647829,
+		title: "Whispering Wind",
+		author: "Kartini",
+		place: "Jepara",
+		date: "June 5, 1945",
+		category: "History",
+		content:
+			"The whispering wind carries stories from the past, about struggles, love, and unceasing prayers. In Jepara, the wind still seems to convey Kartini's message to continue fighting for equality. This article weaves together tales of nature and history, connecting readers with timeless values.",
+		summary:
+			"The whispering wind carries stories from the past, about struggles, love, and unceasing prayers. In Jepara, the wind still seems to convey Kartini's message to continue fighting for equality. This article weaves together tales of nature and history, connecting readers with timeless values.",
+		cover: "/img/article/image4.png",
+	},
+	{
+		id: 263748271,
+		title: "Morning Glory",
+		author: "Sudirman",
+		place: "Yogyakarta",
+		date: "July 17, 1958",
+		category: "Art",
+		content:
+			"The dawn breaking in the eastern horizon always brings new energy. This article depicts the lives of Yogyakarta communities during the reconstruction period, how they started their day with prayers, hard work, and mutual cooperation. Morning Glory symbolizes hope, reminding us that every day is a chance to rise and move forward together.",
+		summary:
+			"The dawn breaking in the eastern horizon always brings new energy. This article depicts the lives of Yogyakarta communities during the reconstruction period, how they started their day with prayers, hard work, and mutual cooperation. Morning Glory symbolizes hope, reminding us that every day is a chance to rise and move forward together.",
+		cover: "/img/article/image5.png",
+	},
+	{
+		id: 339281993,
+		title: "Endless Path",
+		author: "Cut Nyak Dien",
+		place: "Aceh",
+		date: "August 22, 1965",
+		category: "Art",
+		content:
+			"The long road seems endless, yet it is where life finds its meaning. The struggle of Acehnese people against colonization proves that a strong will can break through limits. This article narrates an unceasing journey, teaching us that even when the path feels exhausting, every step is invaluable history.",
+		summary:
+			"The long road seems endless, yet it is where life finds its meaning. The struggle of Acehnese people against colonization proves that a strong will can break through limits. This article narrates an unceasing journey, teaching us that even when the path feels exhausting, every step is invaluable history.",
+		cover: "/img/article/image6.png",
+	},
+];
 
 export const useArticleFormStore = create<ArticleForm>((set) => ({
 	title: "",
@@ -138,16 +137,5 @@ export const useArticlesStore = create<ArticlesStore>((set) => ({
 
 	addArticle: (article) =>
 		set((state) => ({ articles: [...state.articles, article] })),
-
-	updateArticle: (id, updated) =>
-		set((state) => ({
-			articles: state.articles.map((art) =>
-				art.id === id ? { ...art, ...updated } : art
-			),
-		})),
-
-	removeArticle: (id) =>
-		set((state) => ({
-			articles: state.articles.filter((art) => art.id !== id),
-		})),
+	clearArticles: () => set({ articles: [] }),
 }));

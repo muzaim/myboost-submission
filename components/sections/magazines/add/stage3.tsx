@@ -4,93 +4,103 @@ import Image from "next/image";
 import { useArticleFormStore } from "@/store/articleStore";
 
 interface Stage3Props {
-    formik: FormikProps<{
-        content: string;
-        cover: string;
-    }>;
+	formik: FormikProps<{
+		content: string;
+		cover: string;
+	}>;
 }
 
 const coverImages = [
-    "/img/article/image1.png",
-    "/img/article/image2.png",
-    "/img/article/image3.png",
-    "/img/article/image4.png",
-    "/img/article/image5.png",
-    "/img/article/image6.png",
-    "/img/article/image7.png",
-    "/img/article/image8.png",
-    "/img/article/image9.png",
-    "/img/article/image10.png",
-    "/img/article/image11.png",
-    "/img/article/image.png",
-    "/img/article/image13.png",
-    "/img/article/image14.png",
-    "/img/article/image15.png",
+	"/img/article/image1.png",
+	"/img/article/image2.png",
+	"/img/article/image3.png",
+	"/img/article/image4.png",
+	"/img/article/image5.png",
+	"/img/article/image6.png",
+	"/img/article/image7.png",
+	"/img/article/image8.png",
+	"/img/article/image9.png",
+	"/img/article/image10.png",
+	"/img/article/image11.png",
+	"/img/article/image.png",
+	"/img/article/image13.png",
+	"/img/article/image14.png",
+	"/img/article/image15.png",
 ];
 
 const Stage3: React.FC<Stage3Props> = ({ formik }) => {
-    const setField = useArticleFormStore((state) => state.setField);
+	const setField = useArticleFormStore((state) => state.setField);
 
-    const [selected, setSelected] = useState(formik.values.cover);
-    const textareaRef = useRef<HTMLTextAreaElement>(null);
+	const [selected, setSelected] = useState(formik.values.cover);
+	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-    useEffect(() => {
-        if (textareaRef.current) {
-            textareaRef.current.style.height = "auto";
-            textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-        }
-    }, [formik.values.content]);
-    const handleSelect = (img: string) => {
-        setSelected(img);
-        formik.setFieldValue("cover", img);
-        setField("cover", img);
+	useEffect(() => {
+		if (textareaRef.current) {
+			textareaRef.current.style.height = "auto";
+			textareaRef.current.style.height =
+				textareaRef.current.scrollHeight + "px";
+		}
+	}, [formik.values.content]);
+	const handleSelect = (img: string) => {
+		setSelected(img);
+		formik.setFieldValue("cover", img);
+		setField("cover", img);
+	};
 
-    };
+	return (
+		<div className="w-[80%] mx-auto flex flex-col gap-8">
+			<div className="flex flex-col gap-2">
+				<label htmlFor="content" className="font-semibold text-black">
+					Content
+				</label>
+				<textarea
+					ref={textareaRef}
+					id="content"
+					name="content"
+					placeholder="Write the content here..."
+					className="border rounded-lg border-gray-400 p-2 text-black placeholder-gray-500 focus:outline-none w-full overflow-hidden"
+					value={formik.values.content}
+					onChange={(e) => {
+						formik.handleChange(e);
+						setField("content", e.target.value);
+					}}
+					onBlur={formik.handleBlur}
+				/>
 
-    return (
-        <div className="w-[80%] mx-auto flex flex-col gap-8">
+				{formik.touched.content && formik.errors.content && (
+					<p className="text-red-500 text-sm">
+						{formik.errors.content}
+					</p>
+				)}
+			</div>
 
-            <div className="flex flex-col gap-2">
-                <label htmlFor="content" className="font-semibold text-black">
-                    Content
-                </label>
-                <textarea
-                    ref={textareaRef}
-                    id="content"
-                    name="content"
-                    placeholder="Write the content here..."
-                    className="border rounded-lg border-black p-2 text-black placeholder-gray-500 focus:outline-none focus:border-gray-800 w-full overflow-hidden"
-                    value={formik.values.content}
-                    onChange={(e) => {
-                        formik.handleChange(e);
-                        setField("content", e.target.value);
-                    }}
-                    onBlur={formik.handleBlur}
-                />
+			<div className="grid grid-cols-5 gap-4">
+				{coverImages.map((img) => (
+					<div
+						key={img}
+						onClick={() => handleSelect(img)}
+						className={`cursor-pointer border-4 ${
+							selected === img
+								? "border-black"
+								: "border-transparent"
+						} rounded-md overflow-hidden`}
+					>
+						<Image
+							width={500}
+							height={500}
+							src={img}
+							alt="cover"
+							className="w-full h-40 object-cover"
+						/>
+					</div>
+				))}
+			</div>
 
-                {formik.touched.content && formik.errors.content && (
-                    <p className="text-red-500 text-sm">{formik.errors.content}</p>
-                )}
-            </div>
-
-            <div className="grid grid-cols-5 gap-4">
-                {coverImages.map((img) => (
-                    <div
-                        key={img}
-                        onClick={() => handleSelect(img)}
-                        className={`cursor-pointer border-4 ${selected === img ? "border-black" : "border-transparent"
-                            } rounded-md overflow-hidden`}
-                    >
-                        <Image width={500} height={500} src={img} alt="cover" className="w-full h-40 object-cover" />
-                    </div>
-                ))}
-            </div>
-
-            {formik.touched.cover && formik.errors.cover && (
-                <p className="text-red-500 text-sm">{formik.errors.cover}</p>
-            )}
-        </div>
-    );
+			{formik.touched.cover && formik.errors.cover && (
+				<p className="text-red-500 text-sm">{formik.errors.cover}</p>
+			)}
+		</div>
+	);
 };
 
 export default Stage3;

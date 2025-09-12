@@ -7,7 +7,7 @@ const Header = () => {
 		<header className="w-full relative">
 			<div className="px-4 md:px-8 lg:px-16">
 				<div className="h-20 flex flex-row justify-between items-center">
-					<Link href="/" className="text-lg font-bold">
+					<Link href="/" className="text-lg font-bold font-poppins">
 						Soerdja Magazine
 					</Link>
 					<ul className="flex gap-5 text-md">

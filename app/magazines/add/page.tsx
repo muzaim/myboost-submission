@@ -10,12 +10,19 @@ import * as Yup from "yup";
 import { useArticleFormStore, useArticlesStore } from "@/store/articleStore";
 import { Article } from "@/store/articleStore";
 import FormButton from "@/components/ui/formButton";
+import Link from "next/link";
+import { CustomToast } from "@/components/common/customToast";
+import { useRouter } from "next/navigation";
+
 const AddMagazines = () => {
 	const [stage, setStage] = useState(1);
 	const [showConfirm, setShowConfirm] = useState(false);
 
 	const addArticle = useArticlesStore((state) => state.addArticle);
+	const clearArticles = useArticlesStore((state) => state.clearArticles);
+
 	const formState = useArticleFormStore();
+	const router = useRouter();
 
 	const nextStage = () => {
 		const currentStageFields = stageFields[stage];
@@ -54,12 +61,12 @@ const AddMagazines = () => {
 			cover: formState.cover,
 		},
 		validationSchema: Yup.object({
-			title: Yup.string().required("Title is required"),
-			author: Yup.string().required("Author is required"),
-			summary: Yup.string().required("summary is required"),
-			category: Yup.string().required("category is required"),
-			place: Yup.string().required("category is required"),
-			content: Yup.string().required("content is required"),
+			title: Yup.string().required("Title is required").min(3),
+			author: Yup.string().required("Author is required").min(3),
+			summary: Yup.string().required("Summary is required").min(5),
+			category: Yup.string().required("Category is required"),
+			place: Yup.string().required("Pategory is required"),
+			content: Yup.string().required("Content is required").min(3),
 			cover: Yup.string().required("Cover is required"),
 		}),
 		onSubmit: (values) => {
@@ -75,8 +82,12 @@ const AddMagazines = () => {
 				category: values.category,
 			};
 
-			console.log("Submitted data:", newArticle);
 			addArticle(newArticle);
+			CustomToast.success("Article submitted successfully!");
+			formState.resetForm();
+			setTimeout(() => {
+				router.push("/magazines");
+			}, 1500);
 		},
 	});
 
@@ -103,7 +114,18 @@ const AddMagazines = () => {
 	}, [showConfirm]);
 
 	return (
-		<div className="px-4 md:px-8 lg:px-16 py-10">
+		<div className="px-4 md:px-8 lg:px-16 ">
+			<div className="bg-white-30 text-black grid grid-cols-2 pt-5 gap-6 pb-10">
+				<Link
+					href="/magazines"
+					className="font-bold text-lg uppercase leading-none"
+				>
+					back
+				</Link>
+				<Link href="/magazines" className="flex flex-row justify-end">
+					<span className="font-semibold uppercase">Magazines</span>
+				</Link>
+			</div>
 			{/* Progress Indicator */}
 			<div className="flex gap-4 mb-10">
 				{[1, 2, 3, 4].map((s) => (
@@ -119,7 +141,7 @@ const AddMagazines = () => {
 			{/* Stage Content */}
 			<form
 				onSubmit={formik.handleSubmit}
-				className="h-max w-full bg-gray-100 p-8 border border-black-300 rounded-xl flex flex-col justify-between"
+				className="h-max w-full bg-gray-100 p-8 border border-black-300 rounded-xl flex flex-col justify-between my-10"
 			>
 				{renderStage()}
 
@@ -129,7 +151,7 @@ const AddMagazines = () => {
 						<button
 							type="button"
 							onClick={prevStage}
-							className="px-6 py-3 border border-black rounded-full text-black font-medium uppercase hover:bg-black hover:text-white transition"
+							className="cursor-pointer px-6 py-3 border border-black rounded-full text-black font-medium uppercase hover:bg-black hover:text-white transition"
 						>
 							Back
 						</button>

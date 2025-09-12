@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
-import AOSProvider from "@/components/providers/AOSProvider"; // 🔹 import
+import AOSProvider from "@/components/providers/AOSProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { CustomToastContainer } from "@/components/common/customToast";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -13,6 +16,17 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
+});
+
+const roboto = Roboto({
+	variable: "--font-roboto",
+	subsets: ["latin"],
+});
+
+const poppins = Poppins({
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -28,10 +42,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${poppins.variable} bg-gray-100 font-sans antialiased`}
 			>
 				<Header />
 				<AOSProvider>{children}</AOSProvider>
+				{/* <ToastContainer position="top-right" autoClose={3000} /> */}
+				<CustomToastContainer />
 				<Footer />
 			</body>
 		</html>
