@@ -4,16 +4,13 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 const Footer = () => {
 	return (
 		<div className="h-[40rem] bg-black text-white flex flex-col justify-between">
-			{/* Top Section */}
 			<div className="flex-1 flex items-center justify-center">
 				<div className="grid grid-cols-12 gap-12 w-3/4">
-					{/* Left text (span 6) */}
 					<h3 className="col-span-6 font-bold text-[5rem] uppercase leading-tight">
 						Design News <br />
 						To Your Inbox
 					</h3>
 
-					{/* Right form (span 6) */}
 					<div className="col-span-6 flex items-center">
 						<input
 							type="email"
@@ -27,7 +24,6 @@ const Footer = () => {
 				</div>
 			</div>
 
-			{/* Footer Links */}
 			<div className="border-t border-gray-700 py-8">
 				<div className="grid grid-cols-4 gap-8 w-3/4 mx-auto text-sm uppercase tracking-wide">
 					<div>

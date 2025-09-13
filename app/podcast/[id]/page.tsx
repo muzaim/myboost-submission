@@ -24,7 +24,6 @@ const PodcastDetailPage = () => {
 					</div>
 				</div>
 				<div className="grid grid-cols-12 py-20 gap-[3rem]">
-					{/* kiri (5 kolom) */}
 					<div className="col-span-5 flex justify-end">
 						<div className="w-max">
 							<div className="flex flex-row gap-3 items-center">
@@ -55,7 +54,6 @@ const PodcastDetailPage = () => {
 
 							<hr className="my-5" />
 							<div className="space-y-4 text-sm">
-								{/* Date */}
 								<div className="flex justify-between items-center">
 									<span className="font-semibold text-gray-700">
 										Date
@@ -65,7 +63,6 @@ const PodcastDetailPage = () => {
 									</span>
 								</div>
 
-								{/* Read */}
 								<div className="flex justify-between items-center">
 									<span className="font-semibold text-gray-700">
 										Read
@@ -73,7 +70,6 @@ const PodcastDetailPage = () => {
 									<span className="text-gray-600">2 min</span>
 								</div>
 
-								{/* Share */}
 								<div className="flex justify-between items-center">
 									<span className="font-semibold text-gray-700">
 										Share
@@ -109,7 +105,6 @@ const PodcastDetailPage = () => {
 						</div>
 					</div>
 
-					{/* kanan (7 kolom) */}
 					<div className="col-span-5 flex flex-col justify-start space-y-6 text-gray-800 leading-relaxed">
 						<p className="text-2xl font-bold">Episode 01</p>
 						<h3 className="text-[6rem] font-bold uppercase text-black tracking-tighter leading-none">

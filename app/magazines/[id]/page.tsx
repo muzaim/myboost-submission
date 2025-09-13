@@ -103,7 +103,6 @@ const MagazineDetailPage: React.FC<Props> = ({ params }) => {
 						</div>
 						<hr className="my-5" />
 						<div className="space-y-4 text-sm">
-							{/* Date */}
 							<div className="flex justify-between items-center">
 								<span className="font-semibold text-gray-700">
 									Date

@@ -55,12 +55,10 @@ const Podcast = () => {
 							key={podcast.id}
 							className="grid grid-cols-12 items-center border-b border-black py-6 last:border-b-0 gap-4"
 						>
-							{/* Nomor */}
 							<span className="col-span-1 text-2xl font-bold text-gray-400 text-center">
 								{String(index + 1).padStart(2, "0")}
 							</span>
 
-							{/* Gambar */}
 							<div className="col-span-3 flex justify-center">
 								<Image
 									src={podcast.image}
@@ -71,7 +69,6 @@ const Podcast = () => {
 								/>
 							</div>
 
-							{/* Judul */}
 							<Link
 								href={`/podcast/${podcast.id}`}
 								className="col-span-4 font-semibold text-lg"
@@ -79,7 +76,6 @@ const Podcast = () => {
 								{podcast.title}
 							</Link>
 
-							{/* Detail */}
 							<div className="col-span-2 text-sm text-gray-600 flex gap-5">
 								<p>
 									<span className="font-semibold text-black">
@@ -95,7 +91,6 @@ const Podcast = () => {
 								</p>
 							</div>
 
-							{/* Button */}
 							<div className="col-span-2 flex justify-center">
 								<button className=" cursor-pointer px-5 py-2 border border-black rounded-full text-sm font-medium uppercase hover:bg-black hover:text-white transition-colors duration-300">
 									play

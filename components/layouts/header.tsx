@@ -44,7 +44,6 @@ const Header = () => {
 						</div>
 					</ul>
 				</div>
-				{/* border custom */}
 				<span className="block border-b border-black-300 w-full"></span>
 			</div>
 		</header>

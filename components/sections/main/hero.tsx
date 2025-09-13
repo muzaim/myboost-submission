@@ -4,11 +4,10 @@ import React from "react";
 const Hero = () => {
 	return (
 		<div className="bg-white-30 text-black p-0 w-full flex flex-col">
-			<h1 className="text-[18rem] font-bold uppercase leading-none tracking-tight w-full text-center font-serif">
+			<h1 className="text-[16rem] font-bold uppercase leading-none tracking-tight w-full text-center font-serif">
 				art & life
 			</h1>
 
-			{/* news ticker */}
 			<div className="h-12 bg-black text-white flex items-center justify-center px-5 gap-4 text-center">
 				<span className="font-bold">News Ticker+++</span>
 				<span className="">
@@ -19,7 +18,6 @@ const Hero = () => {
 				</span>
 			</div>
 
-			{/* content grid */}
 			<div className="bg-white-30 text-black grid grid-cols-2 p-5 gap-6">
 				<h3 className="font-bold text-[7rem] uppercase leading-none font-serif">
 					Dont Close <br />
@@ -57,7 +55,6 @@ const Hero = () => {
 				</div>
 			</div>
 
-			{/* image di paling bawah */}
 			<div className="mt-5 mb-5 h-[700px] overflow-hidden">
 				<Image
 					src="/img/hero.png"

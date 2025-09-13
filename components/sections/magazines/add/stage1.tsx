@@ -14,7 +14,6 @@ const Stage1: React.FC<Stage1Props> = ({ formik }) => {
     return (
         <div className="w-[80%] mx-auto flex flex-col gap-8">
 
-            {/* Title Input */}
             <div className="flex flex-col gap-2">
                 <label htmlFor="title" className="font-semibold text-black">
                     Title
@@ -37,7 +36,6 @@ const Stage1: React.FC<Stage1Props> = ({ formik }) => {
                 )}
             </div>
 
-            {/* Author Input */}
             <div className="flex flex-col gap-2">
                 <label htmlFor="author" className="font-semibold text-black">
                     Author

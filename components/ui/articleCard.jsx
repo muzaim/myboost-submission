@@ -10,7 +10,6 @@ const ArticleCard = ({ article, index }) => {
 			data-aos="fade-up"
 			data-aos-delay={(index * 200).toString()}
 		>
-			{/* gambar cover */}
 			<div className="">
 				<Image
 					src={article.cover}
@@ -21,7 +20,6 @@ const ArticleCard = ({ article, index }) => {
 				/>
 			</div>
 
-			{/* content */}
 			<div className="flex flex-col justify-between w-full">
 				<div className="flex flex-col gap-3">
 					<h1 className="font-bold text-3xl text-gray-900 font-poppins">

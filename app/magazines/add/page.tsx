@@ -14,12 +14,21 @@ import Link from "next/link";
 import { CustomToast } from "@/components/common/customToast";
 import { useRouter } from "next/navigation";
 
+interface ArticleFormValues {
+	title: string;
+	author: string;
+	summary: string;
+	category: string;
+	place: string;
+	content: string;
+	cover: string;
+}
+
 const AddMagazines = () => {
 	const [stage, setStage] = useState(1);
 	const [showConfirm, setShowConfirm] = useState(false);
 
 	const addArticle = useArticlesStore((state) => state.addArticle);
-	const clearArticles = useArticlesStore((state) => state.clearArticles);
 
 	const formState = useArticleFormStore();
 	const router = useRouter();
@@ -50,7 +59,7 @@ const AddMagazines = () => {
 		3: ["content", "cover"],
 	};
 
-	const formik = useFormik({
+	const formik = useFormik<ArticleFormValues>({
 		initialValues: {
 			title: formState.title,
 			author: formState.author,
@@ -126,26 +135,22 @@ const AddMagazines = () => {
 					<span className="font-semibold uppercase">Magazines</span>
 				</Link>
 			</div>
-			{/* Progress Indicator */}
 			<div className="flex gap-4 mb-10">
 				{[1, 2, 3, 4].map((s) => (
 					<div
 						key={s}
-						className={`flex-1 h-2 rounded-full ${
-							stage >= s ? "bg-black" : "bg-gray-300"
-						} transition-all duration-300`}
+						className={`flex-1 h-2 rounded-full ${stage >= s ? "bg-black" : "bg-gray-300"
+							} transition-all duration-300`}
 					></div>
 				))}
 			</div>
 
-			{/* Stage Content */}
 			<form
 				onSubmit={formik.handleSubmit}
 				className="h-max w-full bg-gray-100 p-8 border border-black-300 rounded-xl flex flex-col justify-between my-10"
 			>
 				{renderStage()}
 
-				{/* Navigation Buttons */}
 				<div className="flex justify-between mt-6">
 					{stage > 1 ? (
 						<button
@@ -187,7 +192,7 @@ const AddMagazines = () => {
 							className="relative z-20 w-96 bg-white p-6 rounded-xl border border-black"
 						>
 							<h2 className="text-lg font-medium mb-4">
-								Make sure?
+								Please confirm that your data is correct before submitting
 							</h2>
 							<div className="flex justify-end gap-4">
 								<FormButton
