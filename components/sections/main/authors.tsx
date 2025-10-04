@@ -1,5 +1,4 @@
 import AuthorCard from "@/components/ui/authorCard";
-import Image from "next/image";
 import React from "react";
 
 const authors = [

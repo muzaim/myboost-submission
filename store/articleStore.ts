@@ -10,6 +10,7 @@ export interface Article {
 	summary: string;
 	category: string;
 	cover: string;
+	city: string;
 }
 
 export interface ArticlesStore {
@@ -25,6 +26,7 @@ export interface ArticleForm {
 	category: string;
 	place: string;
 	content: string;
+	city: string;
 	cover: string;
 	setField: (field: string, value: string) => void;
 	resetForm: () => void;
@@ -43,6 +45,7 @@ const initialArticles: Article[] = [
 		summary:
 			"In the post-war atmosphere, hope became the only force guiding society to keep moving forward. This article portrays the inner journey of a fighter who never gave up, even amidst pain and loss. His story teaches that hope never dies; instead, it grows in adversity, becoming a small light capable of leading many out of darkness.",
 		cover: "/img/article/image1.png",
+		city: "Surabaya",
 	},
 	{
 		id: 9928172326,
@@ -56,6 +59,7 @@ const initialArticles: Article[] = [
 		summary:
 			"A silent journey often holds untold stories. Behind every step lies burdens, prayers, and secrets known only to the heart. This article invites readers to explore silence, find meaning across distance and time, and discover how stillness can become the deepest space for reflection for those seeking peace.",
 		cover: "/img/article/image2.png",
+		city: "Bandung",
 	},
 	{
 		id: 332221569,
@@ -69,6 +73,7 @@ const initialArticles: Article[] = [
 		summary:
 			"The red horizon symbolizes the long struggle of a nation striving for freedom. Red not only represents courage but also countless sacrifices. This article tells the story of young generations daring to dream big despite facing storms of challenges, and how that spirit remains relevant today.",
 		cover: "/img/article/image3.png",
+		city: "Jakarta",
 	},
 	{
 		id: 8273647829,
@@ -82,6 +87,7 @@ const initialArticles: Article[] = [
 		summary:
 			"The whispering wind carries stories from the past, about struggles, love, and unceasing prayers. In Jepara, the wind still seems to convey Kartini's message to continue fighting for equality. This article weaves together tales of nature and history, connecting readers with timeless values.",
 		cover: "/img/article/image4.png",
+		city: "Jepara",
 	},
 	{
 		id: 263748271,
@@ -95,6 +101,7 @@ const initialArticles: Article[] = [
 		summary:
 			"The dawn breaking in the eastern horizon always brings new energy. This article depicts the lives of Yogyakarta communities during the reconstruction period, how they started their day with prayers, hard work, and mutual cooperation. Morning Glory symbolizes hope, reminding us that every day is a chance to rise and move forward together.",
 		cover: "/img/article/image5.png",
+		city: "Yogyakarta",
 	},
 	{
 		id: 339281993,
@@ -108,6 +115,7 @@ const initialArticles: Article[] = [
 		summary:
 			"The long road seems endless, yet it is where life finds its meaning. The struggle of Acehnese people against colonization proves that a strong will can break through limits. This article narrates an unceasing journey, teaching us that even when the path feels exhausting, every step is invaluable history.",
 		cover: "/img/article/image6.png",
+		city: "Aceh",
 	},
 ];
 
@@ -119,6 +127,8 @@ export const useArticleFormStore = create<ArticleForm>((set) => ({
 	place: "",
 	content: "",
 	cover: "",
+	city: "",
+
 	setField: (field, value) => set((state) => ({ ...state, [field]: value })),
 	resetForm: () =>
 		set({

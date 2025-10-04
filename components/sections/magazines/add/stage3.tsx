@@ -5,8 +5,15 @@ import { useArticleFormStore } from "@/store/articleStore";
 
 interface Stage3Props {
 	formik: FormikProps<{
+		title: string;
+		author: string;
+		summary: string;
+		category: string;
+		place: string;
 		content: string;
 		cover: string;
+		city: string;
+
 	}>;
 }
 
@@ -79,11 +86,10 @@ const Stage3: React.FC<Stage3Props> = ({ formik }) => {
 					<div
 						key={img}
 						onClick={() => handleSelect(img)}
-						className={`cursor-pointer border-4 ${
-							selected === img
-								? "border-black"
-								: "border-transparent"
-						} rounded-md overflow-hidden`}
+						className={`cursor-pointer border-4 ${selected === img
+							? "border-black"
+							: "border-transparent"
+							} rounded-md overflow-hidden`}
 					>
 						<Image
 							width={500}

@@ -14,7 +14,7 @@ type AuthorCardProps = {
 	total: number;
 };
 
-export default function AuthorCard({ author, idx, total }: AuthorCardProps) {
+export default function AuthorCard({ author, idx }: AuthorCardProps) {
 	return (
 		<div
 			className="flex items-center gap-5 p-4 border-gray-400 border"

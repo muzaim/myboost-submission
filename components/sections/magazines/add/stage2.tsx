@@ -4,9 +4,15 @@ import { useArticleFormStore } from "@/store/articleStore";
 
 interface Stage2Props {
 	formik: FormikProps<{
+		title: string;
+		author: string;
 		summary: string;
 		category: string;
 		place: string;
+		content: string;
+		cover: string;
+		city: string;
+
 	}>;
 }
 

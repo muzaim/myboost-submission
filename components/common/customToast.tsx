@@ -38,6 +38,7 @@ export const CustomToast = {
 export const CustomToastContainer = () => (
 	<ToastContainer
 		toastClassName={() => "bg-black text-white"}
-		bodyClassName={() => "text-white font-medium"}
+		className="text-white font-medium"
 	/>
+
 );

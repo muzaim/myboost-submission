@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import AOSProvider from "@/components/providers/AOSProvider";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CustomToastContainer } from "@/components/common/customToast";
 

@@ -14,6 +14,8 @@ import Link from "next/link";
 import { CustomToast } from "@/components/common/customToast";
 import { useRouter } from "next/navigation";
 
+
+
 interface ArticleFormValues {
 	title: string;
 	author: string;
@@ -22,6 +24,7 @@ interface ArticleFormValues {
 	place: string;
 	content: string;
 	cover: string;
+	city: string;
 }
 
 const AddMagazines = () => {
@@ -45,10 +48,11 @@ const AddMagazines = () => {
 
 		formik.validateForm().then((errors) => {
 			const stageHasError = currentStageFields.some(
-				(field) => errors[field]
+				(field) => errors[field as keyof ArticleFormValues]
 			);
 			if (!stageHasError) setStage((prev) => Math.min(prev + 1, 4));
 		});
+
 	};
 
 	const prevStage = () => setStage((prev) => Math.max(prev - 1, 1));
@@ -68,6 +72,7 @@ const AddMagazines = () => {
 			place: formState.place,
 			content: formState.content,
 			cover: formState.cover,
+			city: formState.city
 		},
 		validationSchema: Yup.object({
 			title: Yup.string().required("Title is required").min(3),
@@ -89,6 +94,7 @@ const AddMagazines = () => {
 				summary: values.summary,
 				cover: values.cover,
 				category: values.category,
+				city: values.city
 			};
 
 			addArticle(newArticle);

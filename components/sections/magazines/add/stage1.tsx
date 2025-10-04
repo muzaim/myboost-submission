@@ -6,6 +6,13 @@ interface Stage1Props {
     formik: FormikProps<{
         title: string;
         author: string;
+        summary: string;
+        category: string;
+        place: string;
+        content: string;
+        cover: string;
+        city: string;
+
     }>;
 }
 const Stage1: React.FC<Stage1Props> = ({ formik }) => {

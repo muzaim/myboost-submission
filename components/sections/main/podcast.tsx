@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import PodcastCard from "../../ui/podcastCard";
 import Link from "next/link";

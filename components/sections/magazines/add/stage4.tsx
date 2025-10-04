@@ -6,11 +6,12 @@ interface Stage4Props {
     formik: FormikProps<{
         title: string;
         author: string;
-        content: string;
         summary: string;
-        category?: string;
-        city?: string;
-        cover?: string;
+        category: string;
+        place: string;
+        content: string;
+        cover: string;
+        city: string;
     }>;
 }
 
