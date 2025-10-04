@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
+# MYBOOST Submission
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Muhammad Syafri Surya Muzaim - Fullstack Developer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
+The Magazine App is a digital platform designed to make it easy for users to read and manage articles in one place. On the main page, users can explore a collection of articles that include the title, author, summary, and cover image. Each article can be opened to view its full content, giving readers a seamless way to access information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+In addition to browsing, the app also provides a feature to create new articles. Through a simple form, users can enter essential details such as the title, author, summary, category, location, content, and cover image. This makes it possible for anyone to contribute new content, ensuring that the magazine continues to grow and stay updated.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- iew a list of all available articles with title, author, summary, and cover image.
+- Open an article to read the full content.
+- Responsive and user-friendly interface built with Next.js and Tailwind CSS.
+- Add new articles through a structured form with validation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- NextJs (Frontend) – A React framework for building modern, fast web applications.
+- Tailwind CSS – A utility-first CSS framework for rapid and consistent styling.
+- Formik - A library to simplify form management and input state handling in React.
+- Yup - A schema-based form validation library that works with Formik.
+- Axios – An HTTP client library for making API requests to the backend.
+- Zustand – A lightweight state management library for React/Next.js; useful for managing global state with minimal boilerplate compared to Redux.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Setup Project 
+ Navigate to the folder
+```bash
+cd soerdja-magazine
+
+
+```
+Run the NextJs project
+```bash
+npm install
+npm run dev
+```
